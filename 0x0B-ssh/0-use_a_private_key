@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+ssh -i ~/.ssh/school ubuntu@ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7eJgVLGhDOtUkXc/S0m8/8VOWpy9J9WUm zdJmTdWvQqDDfAgTOb+lNZZHhjveJ1st92LG9WzO0yjXcWcvdpHA0dFMb50gdlOJ BcsZ41TUwLSL+yafg3GJtkJHNB1r18i4uKaiTME6Eq8m8WtwkXwj/cHZtfRIKPLW /Fx97Yb7G4o7n/bHqRnKIvnJL4mtFSBh8jHK7JMmQNYKuI2/Aux/2AAIlWpC8nCS RwZl3Ki2r4w6vSJE95BR5uknwJ7ABe3zsQdqo4ovGOdVihhtwIKSvOtRsYW7aFf6 59v/U6QKO8r1zQ0EfNH8jqiCvfMhJxG9kwdtcqaN8KsYnUUvZfOn== alaaredaa101@gmail.com
