@@ -1,24 +1,27 @@
-#!/usr/bin/python3
-"""function that queries the Reddit API and prints the titles
-of the first 10 hot posts listed for a given subreddit."""
-
+import requests
+import sys
+import json
 
 def top_ten(subreddit):
-    """function that queries the Reddit API and prints the titles
-    of the first 10 hot posts listed for a given subreddit."""
-    import requests
-    import sys
-
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {'User-Agent': 'Mozilla/5.0'}
+    url = f"https://www.reddit.com/r/{subreddit}/top.json?limit=10"
+    r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
     try:
-        response = requests.get(url, headers=headers,
-                                allow_redirects=False)
-        if response.status_code == 200:
-            children = response.json().get('data').get('children')
-            for i in range(10):
-                print(children[i].get('data').get('title'))
-        else:
-            print("None")
-    except Exception:
-        print("None")
+        r = r.json()
+    except json.decoder.JSONDecodeError:
+        print("Error: Invalid JSON response from Reddit API")
+        return
+
+    if "data" not in r or "children" not in r["data"]:
+        print("Error: Invalid JSON response from Reddit API")
+        return
+
+    for post in r["data"]["children"]:
+        print(post["data"]["title"])
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python3 1-main.py <subreddit>")
+        sys.exit(1)
+
+    top_ten(sys.argv[1])
+
